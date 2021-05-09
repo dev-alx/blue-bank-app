@@ -1,0 +1,11 @@
+button{
+    margin-right: 10px;
+}
+
+.error{
+    border-color: red;
+}
+
+.ok {
+    border-color: green;
+}

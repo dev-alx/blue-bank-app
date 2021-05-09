@@ -1,0 +1,23 @@
+<div class="row">
+    <h1>{{ titulo }}</h1>
+    <hr />
+    <form [formGroup] = "form" (ngSubmit)="guardar()">
+        <div class="form-group">            
+            <div class="form-group">            
+                <label for="cuenta">Cuenta</label>            
+                <input type="text" disabled=true [value]="cuenta" class="form-control" id="nombre">            
+        </div>
+            <label for="tipo">Tipo Movimiento</label>                              
+            <input type="text" disabled=true [value]="movimiento" class="form-control" id="tipo">
+        </div>
+        <div class="form-group">
+            <label for="monto">Monto</label>            
+            <input type="number" formControlName="monto"  
+            [class.ok]="this.form.get('monto').valid"   
+            [class.error]="this.form.get('monto').invalid && this.form.get('monto').touched"
+            class="form-control" id="monto" placeholder="Monto">            
+        </div>
+        <button type="submit" [disabled]="this.form.invalid" class="btn btn-primary">Guardar</button>
+        <button type="button" [routerLink]="['/home']" class="btn btn-danger">Regresar</button>
+    </form>
+</div>

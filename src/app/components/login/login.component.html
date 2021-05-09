@@ -1,0 +1,38 @@
+<app-spinner *ngIf="show"></app-spinner>
+<div class="container">  
+    <div class="abs-center">
+        <div class="col-lg-6">
+            <div class="card text-center">
+                <div class="card-header">
+                  Iniciar Sesion
+                </div>
+                <form [formGroup] = "form" (ngSubmit)="login()">
+                    <div class="card-body">
+                        <div class="row">
+                            <label for="email" class="col-sm-2">Usuario</label>
+                            <div class="col-sm-10">
+                            <input type="text" class="form-control" id="email" formControlName="usuario"
+                            [class.ok]="this.form.get('usuario').valid"   
+                            [class.error]="this.form.get('usuario').invalid && this.form.get('usuario').touched">                            
+                            </div>
+                        </div>
+                        <div class="row mt-2">
+                            <label for="password" class="col-sm-2">Clave</label>
+                            <div class="col-sm-10">
+                            <input type="password" class="form-control" id="password" formControlName="password"
+                            [class.ok]="this.form.get('password').valid"   
+                            [class.error]="this.form.get('password').invalid && this.form.get('password').touched">
+                            </div>
+                        </div>
+                        <div class="row mt-2">
+                            <button type="submit" class="btn btn-primary btn-block" [disabled]="this.form.invalid">Enviar</button>
+                        </div>
+                    </div>
+                </form>                
+            </div>       
+        </div>
+    </div>    
+</div>
+
+
+

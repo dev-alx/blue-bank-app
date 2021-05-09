@@ -1,0 +1,29 @@
+<div class="row">
+    <h1>Nuevo Cliente</h1>
+    <hr>
+    <form [formGroup] = "form" (ngSubmit)="guardar()">
+        <div class="form-group">
+            <label for="nombre">Nombre Completo</label>            
+            <input formControlName="nombre" 
+            [class.ok]="this.form.get('nombre').valid"   
+            [class.error]="this.form.get('nombre').invalid && this.form.get('nombre').touched"             
+            type="text" class="form-control" id="nombre" placeholder="Nombre Completo">            
+          </div>
+          <div class="form-group">
+            <label for="identificacion">Identificacion</label>
+            <input formControlName="identificacion" 
+            [class.ok]="this.form.get('identificacion').valid"   
+            [class.error]="this.form.get('identificacion').invalid && this.form.get('identificacion').touched"  
+            type="text" class="form-control" id="identificacion" placeholder="Identificacion">
+          </div>
+          <div class="form-group">
+            <label for="monto">Monto Inicial</label>
+            <input formControlName="monto" 
+            [class.ok]="this.form.get('monto').valid"   
+            [class.error]="this.form.get('monto').invalid && this.form.get('monto').touched"  
+            type="number" class="form-control" id="monto" placeholder="Monto Inicial">
+          </div> 
+          <button type="submit" [disabled]="this.form.invalid" class="btn btn-primary">Guardar</button>
+          <button type="button" [routerLink]="['/home']" class="btn btn-danger">Regresar</button>
+    </form>
+</div>

@@ -1,0 +1,34 @@
+<div class="row">
+    <h1>Detalle de Movimientos</h1>
+    <hr />    
+</div>
+
+  <div class="card w-75">
+    <div class="card-body">
+      <h5 class="card-title"><span><strong>Propietario:</strong></span> {{ movements.fullName }} </h5>
+      <p class="card-text"><span><strong>Cuenta:</strong></span> {{ movements.product }}</p>      
+      <p class="card-text"><span><strong>Saldo Disponible:</strong></span> {{ movements.balance }}</p>
+    </div>
+  </div>
+
+<table class="table mt-5">
+    <thead>
+      <tr>
+        <th scope="col">#</th>        
+        <th scope="col">Fecha</th>
+        <th scope="col">Tipo Movimiento</th>
+        <th scope="col">Monto</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let mov of movements.accountMovement; let i = index">
+        <th scope="row">{{ i + 1 }}</th>
+        <td>{{ mov.recordDate | date :'short'}}</td>
+        <td>{{ mov.movementType === 0 ? 'Consignacion' : 'Retiro' }}</td>
+        <td>{{ mov.amount }}</td>        
+      </tr>     
+    </tbody>
+  </table>
+  <div> 
+    <button type="button" [routerLink]="['/home']" class="btn btn-danger">Regresar</button>
+  </div>

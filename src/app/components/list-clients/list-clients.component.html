@@ -1,0 +1,58 @@
+<div class="row mt-3">
+    <div class="col-lg-6">
+        <h1>Listado de Clientes</h1>
+    </div>
+    <div class="col-lg-4">
+
+    </div>
+    <div class="col-lg-2">
+        <button class="btn btn-success" routerLink="/create">Nuevo Cliente</button>
+    </div>
+</div>
+
+    <table *ngIf="listaCliente.length > 0" class="table mt-5">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Nombre Completo</th>
+            <th scope="col">Cuenta</th>
+            <th scope="col">Saldo</th>
+            <th scope="col">Detalle</th>
+            <th scope="col">Consignar</th>
+            <th scope="col">Retirar</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let cliente of listaCliente; let i = index">
+            <th scope="row">{{ i + 1 }}</th>
+            <td>{{ cliente.fullName }}</td>
+            <td>{{ cliente.product }}</td>
+            <td>{{ cliente.initialBalance }}</td> 
+            <td>
+                <i class="fas fa-search text-info fa-lg icono" 
+                [routerLink]="['/view',cliente.socialNumber,cliente.product]"></i>
+            </td>  
+            <td>
+              <i class="fas fa-donate text-success fa-lg icono" 
+                [routerLink]="['/new',cliente.socialNumber,cliente.product,0]"></i>
+            </td>   
+            <td>
+              <i class="fas fa-money-check-alt text-danger fa-lg icono" 
+                [routerLink]="['/new',cliente.socialNumber,cliente.product,1]"></i>
+            </td>   
+          </tr>          
+        </tbody>
+      </table>
+
+<div *ngIf="showLoading"> 
+  <app-spinner></app-spinner>
+</div>
+
+<div *ngIf="listaCliente.length === 0" class="row mt-5">
+    <h5>No se encontraron clientes para mostrar</h5>
+</div>
+
+
+
+
+
